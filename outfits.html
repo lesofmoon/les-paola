@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outfits - Les & Paola</title>
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body class="page-bg">
+
+    <div class="container contained py-4">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold m-0 text-start">Outfits</h2>
+            <a href="index.html" class="close-btn-text">
+                Close <ion-icon name="close-outline" style="font-size: 1.2rem; vertical-align: text-bottom;"></ion-icon>
+            </a>
+        </div>
+
+        <!-- Tab Selector -->
+        <div class="mb-5">
+            <p class="mb-2 text-muted">Select Gender:</p>
+            <div class="d-inline-flex gap-4 position-relative" style="width: 100%; max-width: 300px;">
+                <span class="tab-item active" data-target="women">Women's</span>
+                <span class="tab-item" data-target="men">Men's</span>
+            </div>
+        </div>
+
+        <!-- Carousel Container -->
+
+        <!-- Women's Carousel -->
+        <div id="carousel-women" class="outfit-carousel-container active-carousel">
+            <div class="carousel-track-wrapper">
+                <button class="carousel-control prev" onclick="nextSlide('women', -1)">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </button>
+
+                <div class="carousel-track" id="track-women">
+                    <!-- Items -->
+                    <div class="carousel-item-custom active">
+                        <h4 class="fw-bold mb-1">(Principal Sponsors)</h4>
+                        <p class="text-muted small mb-3">(Swipe left or right)</p>
+                        <img src="img/fem0.png" class="outfit-img" alt="Dress">
+                        <p class="mt-3 fw-bold">Garden Formal (Terracotta Orange)</p>
+                    </div>
+                    <div class="carousel-item-custom">
+                        <h4 class="fw-bold mb-1">(Guests)</h4>
+                        <p class="text-muted small mb-3">(Swipe left or right)</p>
+                        <!-- Re-using previous upload or placeholder since only shoes were clearly in new batch for women? -->
+                        <img src="img/fem2.png" class="outfit-img" alt="Gown">
+                        <p class="mt-3 fw-bold text-center">Garden Formal (Green)</p>
+                    </div>
+                    <div class="carousel-item-custom">
+                        <h4 class="fw-bold mb-1">(Guests)</h4>
+                        <p class="text-muted small mb-3">(Swipe left or right)</p>
+                        <!-- Re-using previous upload or placeholder since only shoes were clearly in new batch for women? -->
+                        <img src="img/fem3.png" class="outfit-img" alt="Gown">
+                        <p class="mt-3 fw-bold text-center">Garden Formal (Orange)</p>
+                    </div>
+                    <div class="carousel-item-custom">
+                        <h4 class="fw-bold mb-1">(Guests)</h4>
+                        <p class="text-muted small mb-3">(Swipe left or right)</p>
+                        <!-- Re-using previous upload or placeholder since only shoes were clearly in new batch for women? -->
+                        <img src="img/fem4.png" class="outfit-img" alt="Gown">
+                        <p class="mt-3 fw-bold text-center">Garden Formal (Powder Blue)</p>
+                    </div>
+                    <div class="carousel-item-custom">
+                        <h4 class="fw-bold mb-1">(Guests)</h4>
+                        <p class="text-muted small mb-3">(Swipe left or right)</p>
+                        <!-- Re-using previous upload or placeholder since only shoes were clearly in new batch for women? -->
+                        <img src="img/fem5.png" class="outfit-img" alt="Gown">
+                        <p class="mt-3 fw-bold text-center">Garden Formal (Yellow)</p>
+                    </div>
+                    <div class="carousel-item-custom">
+                        <h4 class="fw-bold mb-1">(Sponsors & Guests)</h4>
+                        <p class="text-muted small mb-3">(Swipe left or right)</p>
+                        <!-- Re-using previous upload or placeholder since only shoes were clearly in new batch for women? -->
+                        <img src="img/fem6.png" class="outfit-img" alt="Gown">
+                        <p class="mt-3 fw-bold">Wedge Shoes / Sandals</p>
+                        <p class="mt-3 text-center" style="font-style: italic;">(Wedge shoes are recommended due to the garden terrain, as heels may sink or get stuck.)</p>
+                    </div>
+                </div>
+
+                <button class="carousel-control next" onclick="nextSlide('women', 1)">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                </button>
+            </div>
+        </div>
+
+        <!-- Men's Carousel -->
+        <div id="carousel-men" class="outfit-carousel-container" style="display: none;">
+            <div class="carousel-track-wrapper">
+                <button class="carousel-control prev" onclick="nextSlide('men', -1)">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </button>
+
+                <div class="carousel-track" id="track-men">
+                    <!-- Items -->
+                    <div class="carousel-item-custom active">
+                        <h4 class="fw-bold mb-1">(Sponsors)</h4>
+                        <p class="text-muted small mb-3">(Swipe left or right)</p>
+                        <img src="img/men1.png" class="outfit-img" alt="Long Barong">
+                        <p class="mt-3 fw-bold">Long-Sleeves Barong Tagalog</p>
+                    </div>
+                    <div class="carousel-item-custom">
+                        <h4 class="fw-bold mb-1">(Sponsors)</h4>
+                        <p class="text-muted small mb-3">(Swipe left or right)</p>
+                        <img src="img/men5.png" class="outfit-img" alt="Pants">
+                        <p class="mt-3 fw-bold text-center">Dark Greyish Brown Slack Pants</p>
+                    </div>
+                    <div class="carousel-item-custom">
+                        <h4 class="fw-bold mb-1">(Guests)</h4>
+                        <p class="text-muted small mb-3">(Swipe left or right)</p>
+                        <img src="img/men2.png" class="outfit-img" alt="Barong">
+                        <p class="mt-3 fw-bold text-center">Short or Long Sleeves Barong Tagalog</p>
+                    </div>
+                    <div class="carousel-item-custom">
+                        <h4 class="fw-bold mb-1">(Guests)</h4>
+                        <p class="text-muted small mb-3">(Swipe left or right)</p>
+                        <img src="img/men3.png" class="outfit-img" alt="Pants">
+                        <p class="mt-3 fw-bold text-center">Black Slack Pants</p>
+                    </div>
+                    <div class="carousel-item-custom">
+                        <h4 class="fw-bold mb-1">(Sponsors & Guests)</h4>
+                        <p class="text-muted small mb-3">(Swipe left or right)</p>
+                        <img src="img/men4.png" class="outfit-img" alt="Shoes">
+                        <p class="mt-3 fw-bold text-center">Black or Dark Brown Leather Shoes</p>
+                    </div>
+                </div>
+
+                <button class="carousel-control next" onclick="nextSlide('men', 1)">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script -->
+   <script>
+    // Configuration
+    const genders = ['women', 'men'];
+    
+    // State management
+    const state = {
+        women: { index: 1, isAnimating: false, totalSlides: 0 },
+        men: { index: 1, isAnimating: false, totalSlides: 0 }
+    };
+
+    // --- 1. Initialization ---
+    function initCarousel(gender) {
+        const track = document.getElementById(`track-${gender}`);
+        if (!track) return;
+
+        const items = track.querySelectorAll('.carousel-item-custom');
+        
+        // Prevent double initialization if clones already exist
+        if (track.classList.contains('initialized')) return;
+
+        // 1. Clone First and Last slides for seamless looping
+        const firstClone = items[0].cloneNode(true);
+        const lastClone = items[items.length - 1].cloneNode(true);
+
+        // Mark clones to identify them later if needed
+        firstClone.classList.add('clone');
+        lastClone.classList.add('clone');
+
+        // Add clones to DOM
+        track.appendChild(firstClone);
+        track.insertBefore(lastClone, items[0]);
+
+        // Mark as initialized
+        track.classList.add('initialized');
+
+        // Update State
+        // (Original length + 2 clones)
+        state[gender].totalSlides = items.length + 2; 
+        state[gender].index = 1; // Start at 1 (because 0 is now the last-clone)
+
+        // Set Initial Position (Show the first real slide)
+        track.style.transform = `translateX(-100%)`;
+        
+        // Update Height immediately
+        updateHeight(gender);
+
+        // Add Transition End Listener for the Loop "Snap"
+        track.addEventListener('transitionend', () => {
+            handleTransitionEnd(gender);
+        });
+    }
+
+    // --- 2. Movement Logic ---
+    function nextSlide(gender, direction) {
+        // Prevent spam clicking while animation is running
+        if (state[gender].isAnimating) return;
+        state[gender].isAnimating = true;
+
+        const track = document.getElementById(`track-${gender}`);
+        
+        // Update Index
+        state[gender].index += direction;
+        
+        // Apply Transition & Move
+        track.style.transition = 'transform 0.4s ease-in-out';
+        track.style.transform = `translateX(-${state[gender].index * 100}%)`;
+
+        // Update height for the next slide
+        updateHeight(gender);
+    }
+
+    // --- 3. The "Snap" Logic (Infinite Loop) ---
+    function handleTransitionEnd(gender) {
+        const track = document.getElementById(`track-${gender}`);
+        const currentIdx = state[gender].index;
+        const total = state[gender].totalSlides;
+
+        state[gender].isAnimating = false;
+
+        // If we reached the clone at the END (Index = Total - 1)
+        if (currentIdx === total - 1) {
+            track.style.transition = 'none'; // Turn off animation
+            state[gender].index = 1;         // Jump to real first slide
+            track.style.transform = `translateX(-100%)`;
+        }
+
+        // If we reached the clone at the START (Index = 0)
+        if (currentIdx === 0) {
+            track.style.transition = 'none'; // Turn off animation
+            state[gender].index = total - 2; // Jump to real last slide
+            track.style.transform = `translateX(-${state[gender].index * 100}%)`;
+        }
+    }
+
+    // --- 4. Utilities ---
+    function updateHeight(gender) {
+        const track = document.getElementById(`track-${gender}`);
+        const items = track.querySelectorAll('.carousel-item-custom');
+        const activeSlide = items[state[gender].index];
+        const wrapper = track.parentElement;
+        
+        if (activeSlide) {
+            wrapper.style.height = activeSlide.offsetHeight + "px";
+        }
+    }
+
+    // --- 5. Event Listeners ---
+    
+    // Tab Switching
+    const tabs = document.querySelectorAll('.tab-item');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.outfit-carousel-container').forEach(c => c.style.display = 'none');
+
+            tab.classList.add('active');
+            const target = tab.dataset.target;
+            document.getElementById(`carousel-${target}`).style.display = 'block';
+            
+            // Recalculate height because hidden elements have 0 height
+            // Small timeout allows display:block to render first
+            setTimeout(() => updateHeight(target), 50);
+        });
+    });
+
+    // Swipe Support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    genders.forEach(gender => {
+        const id = `track-${gender}`;
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        el.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+
+        el.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe(gender);
+        }, {passive: true});
+    });
+
+    function handleSwipe(gender) {
+        const swipeThreshold = 50;
+        if (touchEndX < touchStartX - swipeThreshold) nextSlide(gender, 1);
+        if (touchEndX > touchStartX + swipeThreshold) nextSlide(gender, -1);
+    }
+
+    // Initialize on Load
+    window.addEventListener('load', () => {
+        initCarousel('women');
+        initCarousel('men');
+    });
+
+    // Handle Window Resize (Recalculate heights)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            updateHeight('women');
+            updateHeight('men');
+        }, 100);
+    });
+</script>
+</body>
+
+</html>

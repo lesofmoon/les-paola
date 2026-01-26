@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les & Paola Wedding</title>
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Ionicons for icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+   
+
+    <!-- Particle Background -->
+    <canvas id="particleCanvas"></canvas>
+
+
+    <!-- Audio Control -->
+    <div class="audio-control" id="audioToggle">
+        <ion-icon name="volume-mute-outline" size="large" id="audioIcon"></ion-icon>
+        <audio id="bgMusic" loop>
+            <source src="audio/Amiel Sol - Ikaw Lang Patutunguhan (Official Lyric Visualizer).mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <br> <br>
+
+    <!-- Main Content -->
+    <div class="container contained pb-5 mb-5">
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="img/logo.svg" alt="Logo" class="img-fluid" style="max-width: 250px;">
+        </div>
+
+        <!-- Main Image -->
+        <div class="main-image-container">
+            <!-- Using uploaded image as placeholder, assuming one of them is the main one -->
+            <img src="img/main2.svg" alt="Les & Paola" class="main-image">
+        </div>
+    </div>
+
+    <!-- Sticky Buttons (Mobile) & Desktop Regular Flow -->
+    <div class="sticky-bottom-nav">
+        <a href="https://lesandpaolawedding.rsvpify.com/rsvp-page-preview/1215592?signature=aac40e3e9dfb0398670040ffcf5504b95bd4c208280aa730f6547ac788595da2" target="_blank" class="btn btn-primary text-white">RSVP</a>
+        <button class="btn btn-outline-primary" id="menuBtn">Menu</button>
+    </div>
+
+    <!-- Menu Modal / Full Page Overlay -->
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="menu-content">
+            <!-- Close Top Right: Text button with icon -->
+            <button class="close-btn-top" id="closeMenuTop">
+                 <ion-icon name="close-outline" style="font-size: 1.2rem; vertical-align: text-bottom;"></ion-icon>
+            </button>
+
+            <h2 class="text-center mb-4 mt-2 fw-bold" style="font-size: 2rem;">Menu</h2>
+
+            <nav class="d-flex flex-column align-items-center gap-2 w-100">
+                <a href="when-where.html" class="menu-link">When & Where</a>
+                <a href="entourage.html" class="menu-link">Entourage</a>
+                <a href="outfits.html" class="menu-link">Outfits</a>
+                <a href="gift-guides.html" class="menu-link">Gift Guides</a>
+                <a href="reminders.html" class="menu-link">Reminders</a>
+            </nav>
+
+            <!-- Close Bottom: Button with icon -->
+    <button class="close-btn-bottom" id="closeMenuBottom">
+    Close
+    </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+
+
+
+   <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const colors = [
+        'rgba(181, 154, 122, 0.35)', // light brown
+        'rgba(220, 88, 12, 0.35)',   // orange
+        'rgba(55, 80, 52, 0.35)',    // green
+        'rgba(214, 176, 92, 0.35)'   // yellow
+    ];
+
+    class Particle {
+        constructor() {
+            this.reset();
+        }
+
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2.5 + 1;
+            this.speedX = Math.random() * 0.3 - 0.15;
+            this.speedY = Math.random() * 0.3 - 0.15;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            if (
+                this.x < 0 || this.x > canvas.width ||
+                this.y < 0 || this.y > canvas.height
+            ) {
+                this.reset();
+            }
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        }
+    }
+
+    const particles = [];
+    const PARTICLE_COUNT = 45; // balanced for mobile + desktop
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push(new Particle());
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+});
+</script>
+
+
+
+</body>
+
+
+</html>

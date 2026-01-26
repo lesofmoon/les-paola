@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Guides - Les & Paola</title>
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body class="page-bg">
+
+    <div class="container py-4">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold m-0">Gift Guides</h2>
+            <a href="index.html" class="close-btn-text">
+                Close <ion-icon name="close-outline"></ion-icon>
+            </a>
+        </div>
+
+        <!-- Heading -->
+        <div class="text-center mb-5">
+            <h4 class="fw-bold mb-2 px-3">Your love and prayers mean the most, cash gifts are welcome.</h4><br>
+            <p class="text-muted">Here’s how you can do it:</p>
+        </div>
+
+        <!-- Options Grid -->
+        <div class="row g-4 justify-content-center">
+
+            <!-- Option A -->
+            <div class="col-md-4 text-center">
+                <div class="gift-option p-4 bg-white h-100">
+                    <h5 class="fw-bold text-accent mb-3">Option A</h5>
+                    <p class="mb-3">Contribute to our eBank fund:<br>
+                        <a href="#" class="text-decoration-underline fw-bold" data-bs-toggle="modal"
+                            data-bs-target="#bpiModal">See account details here</a>
+                    </p>
+                    <hr class="my-3">
+                    <a href="#" class="text-muted small text-decoration-underline">Download QR Code</a>
+                </div>
+            </div>
+
+            <!-- Option B -->
+            <div class="col-md-4 text-center">
+                <div class="gift-option p-4 bg-white h-100">
+                    <h5 class="fw-bold text-accent mb-3">Option B</h5>
+                    <p class="mb-1 fw-bold">GCash</p>
+                    <div class="d-flex align-items-center justify-content-center gap-2">
+                        <span id="gcash-num">09156593898</span>
+                        <button class="btn btn-sm btn-outline-secondary rounded-pill py-0 px-2"
+                            onclick="copyToClipboard('09156593898', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option C -->
+            <div class="col-md-4 text-center">
+                <div class="gift-option p-4 bg-white h-100">
+                    <h5 class="fw-bold text-accent mb-3">Option C</h5>
+                    <p>You may give your gift in person at the wedding.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- BPI Modal -->
+    <div class="modal fade" id="bpiModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold">BPI Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0 pb-4">
+
+                    <div class="mb-3">
+                        <label class="d-block text-accent mb-1">Account Name</label>
+                        <div class="d-flex justify-content-between align-items-center bg-light p-2 rounded">
+                            <span class="fw-bold">Mr. and Mrs. de Luna</span>
+                           
+                            <button class="btn btn-sm btn-outline-secondary rounded-pill py-0 px-2"
+                                onclick="copyToClipboard('Mr. and Mrs. de Luna', this)">Copy</button>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="mb-3">
+                        <label class="d-block text-accent mb-1">Account Number</label>
+                        <div class="d-flex justify-content-between align-items-center bg-light p-2 rounded">
+                            <span class="fw-bold">000005082026</span>
+                            <button class="btn btn-sm btn-outline-secondary rounded-pill py-0 px-2"
+                                onclick="copyToClipboard('000005082026', this)">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="button" class="btn btn-outline-dark rounded-pill px-4"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+        <div id="copyToast" class="toast align-items-center text-white bg-dark border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Copied to clipboard
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function copyToClipboard(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Show notification
+                const toastEl = document.getElementById('copyToast');
+                const toast = new bootstrap.Toast(toastEl);
+                toast.show();
+
+                // Change button text temporarily
+                const originalText = btnElement.innerText;
+                btnElement.innerText = "Copied!";
+                setTimeout(() => {
+                    btnElement.innerText = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+
+</html>
