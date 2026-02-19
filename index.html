@@ -15,6 +15,31 @@
 
 <body>
 
+    <div id="flashScreen" class="flash-screen"></div>
+
+
+    <!-- Password Overlay -->
+<div id="passwordOverlay" class="password-overlay">
+    <div class="password-box">
+        <label for="passwordInput" class="form-label fw-bold text-uppercase text-center w-100">
+            Enter Password
+        </label>
+        <input 
+            type="password" 
+            id="passwordInput" 
+            class="form-control text-center"
+            maxlength="8"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            autocomplete="off"
+        >
+        <div id="errorMessage" class="text-danger mt-2 small d-none">
+            Incorrect password. Please try again.
+        </div>
+    </div>
+</div>
+
+
    
 
     <!-- Particle Background -->
@@ -154,6 +179,46 @@ document.addEventListener('DOMContentLoaded', () => {
     animate();
 });
 </script>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const correctPassword = "06132026";
+    const passwordInput = document.getElementById("passwordInput");
+    const errorMessage = document.getElementById("errorMessage");
+    const overlay = document.getElementById("passwordOverlay");
+    const flashScreen = document.getElementById("flashScreen");
+
+    passwordInput.focus();
+
+    passwordInput.addEventListener("input", function () {
+        if (passwordInput.value.length === 8) {
+            if (passwordInput.value === correctPassword) {
+
+                // Trigger white flash
+                flashScreen.classList.add("flash-active");
+
+                setTimeout(() => {
+                    overlay.style.opacity = "0";
+                }, 500);
+
+                setTimeout(() => {
+                    overlay.style.display = "none";
+                }, 1200);
+
+            } else {
+                errorMessage.classList.remove("d-none");
+                passwordInput.value = "";
+            }
+        }
+    });
+
+});
+</script>
+
 
 
 
