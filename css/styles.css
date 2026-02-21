@@ -333,10 +333,12 @@ h6 {
    position: relative;
     max-width: 500px;
     margin: 0 auto;
-    /* Removed padding here to prevent alignment skew */
     padding: 0; 
     overflow: hidden; 
     transition: height 0.3s ease-out;
+    /* FIX: Force hardware acceleration to prevent iOS clipping */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 
@@ -353,23 +355,25 @@ h6 {
 
 .carousel-control {
    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9); /* Increased opacity for visibility */
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: rgba(255, 255, 255, 0.95) !important; 
     border-radius: 50%;
     width: 45px;
     height: 45px;
-    display: flex;
+    display: flex !important; /* Ensure it stays flex */
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(0,0,0,0.1); /* Added slight border */
-    font-size: 1.5rem;
+    border: 1px solid rgba(0,0,0,0.1);
     color: var(--primary-color);
     cursor: pointer;
-    z-index: 100; /* Ensure it is above everything */
-    transition: all 0.3s;
-    opacity: 1 !important; /* CHANGED FROM 0 TO 1 */
+    /* FIX: Higher z-index and force visibility */
+    z-index: 999; 
+    opacity: 1 !important;
     visibility: visible !important;
+    /* FIX: Stop iOS from highlighting the button area on tap */
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .carousel-control:hover {
@@ -377,19 +381,20 @@ h6 {
 }
 
 .carousel-control.prev {
-    left: 5px;
+    left: 10px !important;
 }
 
 .carousel-control.next {
-    right: 5px;
+    right: 10px !important;
 }
 
 
 /* Make icons bigger and darker */
 .carousel-control ion-icon {
     font-size: 24px;
-    pointer-events: none; /* Keep this so the click registers on the button */
     display: block;
+    pointer-events: none;
+    color: var(--primary-color) !important;
 }
 
 .carousel-item-custom {
